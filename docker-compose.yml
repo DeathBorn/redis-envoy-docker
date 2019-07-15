@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+
+  envoy_proxy:
+    container_name: envoy_proxy
+    image: envoyproxy/envoy:v1.11.0
+    restart: always
+    volumes:
+      - ./envoy_config:/etc/envoy
+    ports:
+      - "1999:1999"
+      - "8001:8001"
+
+  redis_server_0:
+    container_name: redis_server_0
+    image: redis:5.0.5
+    restart: always
+    # volumes:
+      # - ./redis_config:/etc/redis
+    ports:
+      - "6379:6379"
+
+  redis_server_1:
+    container_name: redis_server_1
+    image: redis:5.0.5
+    restart: always
+    # volumes:
+      # - ./redis_config:/etc/redis
+    ports:
+      - "6380:6379"
+
+  redis_server_2:
+    container_name: redis_server_2
+    image: redis:5.0.5
+    restart: always
+    # volumes:
+      # - ./redis_config:/etc/redis
+    ports:
+      - "6381:6379"
